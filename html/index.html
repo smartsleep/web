@@ -12,9 +12,28 @@
       li {
         margin-top: 10px;
       }
+      .hidden {
+        display: none;
+      }
+      .error {
+        color: red;
+      }
     </style>
+    <script src="mobile-detect.min.js"></script>
+    <script>
+      const showDownload = function() {
+        const md = new MobileDetect(window.navigator.userAgent);
+        const errorMessage = document.getElementById("android-version-error");
+        const download = document.getElementById("android-download");
+        if (md.version("Android") >= 8) {
+          download.classList.remove("hidden");
+        } else {
+          errorMessage.classList.remove("hidden");
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body onload="showDownload()">
     <div>
       <img class="kulogo" src="./sund.svg">
       <h1 class="title">SmartSleep</h1>
@@ -27,14 +46,23 @@
     </div>
     <hr>
     <h1>Hent Android app</h1>
-    <div class="center dl">
+    <div id="android-version-error" class="hidden">
+      <p class="error">
+        Android Oreo (version 8) eller h&oslash;jere er n&oslash;dvendig for at
+        deltage i unders&oslash;gelsen med en Android telefon.
+      </p>
+      <div class="center">
+        <img src="upgrade-required.jpg">
+      </div>
+    </div>
+    <div id="android-download" class="hidden center dl">
       <a href="app-release.apk"><img src="apk-icon.png"></a>
     </div>
     <h1>Tillad installation p&aring; Android</h1>
-    <ul>
-      <li><a href="guide-7.html">7 eller lavere</a></li>
-      <li><a href="guide-8.html">8 eller h&oslash;jere</a></li>
-    </ul>
+    <p>
+      Se <a href="guide-8.html">guiden</a> for at give tilladelse til at
+      installere apps p&aring; din telefon.
+    </p>
     <h1>Hvis du ser fejlen "App not installed":</h1>
     <p>Sl&aring; Google Play Protect fra: &Aring;ben "Play Store" applikationen => klik p&aring; Menu knappen => v&aelig;lg "Play Protect" => Sl&aring; "Scan device for security threats" fra.</p>
   </body>
