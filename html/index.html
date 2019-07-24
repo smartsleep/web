@@ -25,7 +25,7 @@
         const md = new MobileDetect(window.navigator.userAgent);
         const errorMessage = document.getElementById("android-version-error");
         const download = document.getElementById("android-download");
-        if (md.version("Android") >= 8) {
+        if (md.version("Android") >= 6) {
           download.classList.remove("hidden");
         } else {
           errorMessage.classList.remove("hidden");
@@ -48,7 +48,7 @@
     <h1>Hent Android app</h1>
     <div id="android-version-error" class="hidden">
       <p class="error">
-        Android Oreo (version 8) eller h&oslash;jere er n&oslash;dvendig for at
+        Android Nougat (version 6.0) eller h&oslash;jere er n&oslash;dvendig for at
         deltage i unders&oslash;gelsen med en Android telefon.
       </p>
       <div class="center">
